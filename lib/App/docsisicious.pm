@@ -6,7 +6,7 @@ App::docsisicious - Edit DOCSIS config files
 
 =head1 VERSION
 
-0.01
+0.02
 
 =head1 DESCRIPTION
 
@@ -27,7 +27,7 @@ use File::Spec::Functions 'catdir';
 use File::Basename 'dirname';
 use constant HOME => catdir dirname(__FILE__), 'docsisicious';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 COPYRIGHT AND LICENSE
 

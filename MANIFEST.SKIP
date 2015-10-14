@@ -68,3 +68,4 @@
 ^local/
 ^MANIFEST\.SKIP
 ^README\.pod
+storage

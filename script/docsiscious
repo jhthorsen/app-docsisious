@@ -164,10 +164,10 @@ window.addEventListener('load', function() {
   });
 
   var resize = function() {
-    editor.style.height = window.innerHeight - document.getElementById('header').offsetHeight - 40 + 'px'; };
+    editor.style.height = window.innerHeight - document.getElementById('header').offsetHeight - 60 + 'px';
+  };
   window.addEventListener('resize', resize);
   resize();
-
 });
 @@ css/docsis.css.ep
 @font-face { font-family: "Flaticon"; src: url("../../icons/flaticon.eot"); src: url("../../icons/flaticon.eot#iefix") format("embedded-opentype"), url("../../icons/flaticon.woff") format("woff"), url("../../icons/flaticon.ttf") format("truetype"), url("../../icons/flaticon.svg") format("svg"); font-weight: normal; font-style: normal; }

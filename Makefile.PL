@@ -6,7 +6,7 @@ WriteMakefile(
   LICENSE       => 'artistic_2',
   ABSTRACT_FROM => 'lib/App/docsisicious.pm',
   VERSION_FROM  => 'lib/App/docsisicious.pm',
-  EXE_FILES     => [qw( script/docsiscious )],
+  EXE_FILES     => [qw( script/docsisicious )],
   META_MERGE    => {
     resources => {
       bugtracker => 'https://github.com/jhthorsen/app-docsisicious/issues',

@@ -1,6 +1,6 @@
 Revision history for perl distribution App-docsisicious
 
-0.01 Not Released
+0.01 2015-10-15T01:26:02+0200
  - Add "download" config
  - Add "save" config
  - Add "upload" config

@@ -15,6 +15,18 @@ DOCSIS config files.
 
 Try out L<http://home.thorsen.pm/docsisious> for a demo.
 
+=head1 INSTALLATION
+
+  $ curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org App::docsisious
+
+You also need L<SNMP.pm|SNMP> to be able to write "human readable" OIDs.
+The standard behavior is to decode all OIDs as numeric.
+
+  $ sudo apt-get install libsnmp-perl
+
+If you are using a custom perl build, you have to get L<SNMP.pm|http://www.net-snmp.org/download.html>
+manually.
+
 =head1 SYNOPSIS
 
   # Step 1:

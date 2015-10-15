@@ -13,6 +13,8 @@ App::docsisious - Edit DOCSIS config files on web
 L<App::docsisious> is a L<Mojolicious> web application for editing
 DOCSIS config files.
 
+Try out L<http://home.thorsen.pm/docsisious> for a demo.
+
 =head1 SYNOPSIS
 
   # Step 1:

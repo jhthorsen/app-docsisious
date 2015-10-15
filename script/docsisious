@@ -189,11 +189,17 @@ body, html {
 a {
   color: #4C79B3;
 }
-h1 {
+h1, h1 a {
   color: #4C79B3;
+  text-decoration: none;
+}
+h1 {
   margin: 0.8em 0;
   padding: 0;
   font-size: 2em;
+}
+h1 a:hover {
+  text-decoration: underline;
 }
 label {
   display: block;
@@ -278,7 +284,7 @@ textarea {
 %= form_for "save", enctype => "multipart/form-data", begin
   <div id="header">
     <div id="title_box">&nbsp;</div>
-    <h1>DOCSIS config file editor</h1>
+    <h1><%= link_to 'DOCSIS config file editor', 'editor' %></h1>
     <button class="btn" name="save" value="1" title="Save for later."><i class="icon flaticon-save28"></i></button>
     <button class="btn settings" type="button" title="Settings."><i class="icon flaticon-gear39"></i></a>
     <button class="btn" name="download" value="1" title="Download binary config."><i class="icon flaticon-download164"></i></a>

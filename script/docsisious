@@ -260,11 +260,15 @@ textarea {
   max-width: 70em;
   margin: 0 auto;
 }
-#header { padding: 4em 0 2em; overflow: hidden; }
-#header h1 { float: right; margin: 0; }
+#header { padding: 3em 1em 2em 1em; overflow: hidden; }
+#header h1 { float: right; margin: 0; padding-top: 0.3em; }
 #header .btn { float: left; }
 #settings { display: none; clear: both; padding-top: 1em; }
 #help { display: none; clear: both; padding-top: 1em; }
+@media (max-width: 40em) {
+  #header { padding-top: 0.1em; }
+  #header h1 { padding-bottom: 0.5em; float: none; }
+}
 @@ layouts/default.html.ep
 <!DOCTYPE html>
 <html>

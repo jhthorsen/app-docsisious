@@ -2,6 +2,7 @@ Revision history for perl distribution App-docsisious
 
 0.04 Not Released
  - Add link back to main editor page
+ - Fix editor on smaller devices
 
 0.03 2015-10-15T10:03:05+0200
  - Change name from App::docsisicious to App::docsisious

@@ -7,9 +7,9 @@ use File::Spec::Functions qw( catdir catfile );
 use FindBin;
 use YAML::XS;
 BEGIN { unshift @INC, "$FindBin::Bin/../lib" }
-use App::docsisicious;
+use App::docsisious;
 
-my $STORAGE = $ENV{DOCSIS_STORAGE} || ($ENV{HOME} ? catdir $ENV{HOME}, '.docsisicious' : '');
+my $STORAGE = $ENV{DOCSIS_STORAGE} || ($ENV{HOME} ? catdir $ENV{HOME}, '.docsisious' : '');
 die "DOCSIS_STORAGE=/path/to/docsis/files need to be set" unless $STORAGE;
 mkdir $STORAGE or die "mkdir $STORAGE: $!" unless -d $STORAGE;
 app->log->info("Will store DOCSIS config files in $STORAGE");
@@ -116,9 +116,9 @@ helper paste_id => sub {
   return $id;
 };
 
-app->home->parse(App::docsisicious->HOME);
+app->home->parse(App::docsisious->HOME);
 app->static->paths([app->home->rel_dir('public')]);
-app->defaults(error => '', VERSION => App::docsisicious->VERSION);
+app->defaults(error => '', VERSION => App::docsisious->VERSION);
 app->defaults->{VERSION} =~ s!\W+!-!g;
 app->start;
 
@@ -301,7 +301,7 @@ textarea {
         <li>Can download/upload binary format.</li>
         <li>Can save config for later use.</li>
         <li>Allow setting of shared secret.</li>
-        <li><a href="https://github.com/jhthorsen/app-docsisicious">Open source</a>.</li>
+        <li><a href="https://github.com/jhthorsen/app-docsisious">Open source</a>.</li>
       </ul>
       <p>
         The program is built on top of the powerful <a href="http://perl.org">Perl</a> based
@@ -311,7 +311,7 @@ textarea {
         and start editing.
       </p>
       <p>
-        Please report any bugs to the <a href="https://github.com/jhthorsen/app-docsisicious/issues">github</a>
+        Please report any bugs to the <a href="https://github.com/jhthorsen/app-docsisious/issues">github</a>
         issue tracker.
       </p>
     </div>

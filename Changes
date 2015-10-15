@@ -1,4 +1,7 @@
-Revision history for perl distribution App-docsisicious
+Revision history for perl distribution App-docsisious
+
+0.03 Not Released
+ - Change name from App::docsisicious to App::docsisious
 
 0.02 2015-10-15T01:49:52+0200
  - Remove scrollbar in default view

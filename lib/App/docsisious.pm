@@ -1,8 +1,8 @@
-package App::docsisicious;
+package App::docsisious;
 
 =head1 NAME
 
-App::docsisicious - Edit DOCSIS config files
+App::docsisious - Edit DOCSIS config files on web
 
 =head1 VERSION
 
@@ -10,13 +10,13 @@ App::docsisicious - Edit DOCSIS config files
 
 =head1 DESCRIPTION
 
-L<App::docsisicious> is a L<Mojolicious> web application for editing
+L<App::docsisious> is a L<Mojolicious> web application for editing
 DOCSIS config files.
 
 =head1 SYNOPSIS
 
   # Step 1:
-  $ docsisicious --listen http://*:8000
+  $ docsisious --listen http://*:8000
   # Step 2:
   $ open http://localhost:8000
 
@@ -25,7 +25,7 @@ DOCSIS config files.
 use Mojo::Base -base;
 use File::Spec::Functions 'catdir';
 use File::Basename 'dirname';
-use constant HOME => catdir dirname(__FILE__), 'docsisicious';
+use constant HOME => catdir dirname(__FILE__), 'docsisious';
 
 our $VERSION = '0.02';
 

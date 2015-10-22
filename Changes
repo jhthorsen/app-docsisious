@@ -1,5 +1,9 @@
 Revision history for perl distribution App-docsisious
 
+0.05 Not Released
+ - Add optional TFTP capabilities
+ - Will also save file as binary on server side
+
 0.04 2015-10-15T18:35:57+0200
  - Add link back to main editor page
  - Fix editor on smaller devices

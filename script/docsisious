@@ -8,6 +8,7 @@ use FindBin;
 use YAML::XS;
 BEGIN { unshift @INC, "$FindBin::Bin/../lib" }
 use App::docsisious;
+use if eval { require Mojo::TFTPd }, 'App::docsisious::tftpd';
 
 my $STORAGE = $ENV{DOCSIS_STORAGE} || ($ENV{HOME} ? catdir $ENV{HOME}, '.docsisious' : '');
 die "DOCSIS_STORAGE=/path/to/docsis/files need to be set" unless $STORAGE;
@@ -17,6 +18,10 @@ app->log->info("Will store DOCSIS config files in $STORAGE");
 get '/' => {layout => 'default'} => 'editor';
 get '/css/docsis/:version' => [format => ['css']] => {template => 'css/docsis'};
 get '/js/docsis/:version'  => [format => ['js']]  => {template => 'js/docsis'};
+
+if (App::docsisious::tftpd->can('new')) {
+  app->defaults(tftpd => App::docsisious::tftpd->new(log => app->log, storage => $STORAGE)->start);
+}
 
 my $download = sub {
   my $c = shift;
@@ -50,6 +55,8 @@ my $save = sub {
     $data{shared_secret} = $c->param('shared_secret');
     $data{ts}            = Mojo::Date->new->to_datetime;
     $data{config}        = YAML::XS::Load($config);
+    Mojo::Util::spurt(encode_docsis($data{config}, {shared_secret => $c->param('shared_secret')}),
+      catfile $STORAGE, "$id.bin");
     Mojo::Util::spurt(YAML::XS::Dump(\%data), catfile $STORAGE, "$id.yaml");
     $c->redirect_to('edit' => id => $id);
   } or do {

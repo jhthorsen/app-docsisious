@@ -1,11 +1,12 @@
 Revision history for perl distribution App-docsisious
 
-0.06 2015-11-19T09:24:29+0100
- - Fix 'Use of "do" to call subroutines is deprecated'
+0.06 Not Released
+ - Fix version number
 
 0.05 2015-11-19T09:24:29+0100
  - Add optional TFTP capabilities
  - Will also save file as binary on server side
+ - Fix 'Use of "do" to call subroutines is deprecated'
 
 0.04 2015-10-15T18:35:57+0200
  - Add link back to main editor page

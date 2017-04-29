@@ -1,4 +1,15 @@
 package App::docsisious;
+use Mojo::Base -base;
+
+use File::Spec::Functions 'catdir';
+use File::Basename 'dirname';
+use constant HOME => catdir dirname(__FILE__), 'docsisious';
+
+our $VERSION = '0.07';
+
+1;
+
+=encoding utf8
 
 =head1 NAME
 
@@ -34,15 +45,6 @@ manually.
   # Step 2:
   $ open http://localhost:8000
 
-=cut
-
-use Mojo::Base -base;
-use File::Spec::Functions 'catdir';
-use File::Basename 'dirname';
-use constant HOME => catdir dirname(__FILE__), 'docsisious';
-
-our $VERSION = '0.07';
-
 =head1 COPYRIGHT AND LICENSE
 
 =head2 Icons
@@ -73,5 +75,3 @@ the terms of the Artistic License version 2.0.
 Jan Henning Thorsen - C<jhthorsen@cpan.org>
 
 =cut
-
-1;

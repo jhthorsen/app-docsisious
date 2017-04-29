@@ -1,5 +1,9 @@
 Revision history for perl distribution App-docsisious
 
+0.08 Not Released
+ - Stop using deprecated "slurp" and "spurt" #3
+ - Mojo::Home->parse() is no longer available #3
+
 0.07 2015-11-19T19:28:09+0100
  - App:docsisious::tftpd was not supposed to be released
 

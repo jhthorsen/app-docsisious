@@ -1,10 +1,10 @@
 use Mojo::Base -strict;
 use Test::Mojo;
 use Test::More;
-use File::Spec::Functions qw( catdir catfile );
+use File::Spec::Functions qw(catdir catfile);
 
-$ENV{DOCSIS_STORAGE} = catdir qw( t storage );
-do(catfile qw( script docsisious )) or die $@;
+$ENV{DOCSIS_STORAGE} = catdir qw(t storage);
+do(catfile qw(script docsisious)) or die $@;
 my $t = Test::Mojo->new;
 
 $t->get_ok('/')->status_is(200)->element_exists('form[action="/"][method="POST"]')

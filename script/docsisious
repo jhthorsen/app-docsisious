@@ -1,5 +1,7 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite;
+
+use Mojo::File 'path';
 use Mojo::Util 'steady_time';
 use DOCSIS::ConfigFile qw( decode_docsis encode_docsis );
 use File::Basename;
@@ -50,12 +52,13 @@ my $save = sub {
     $data{shared_secret} = $c->param('shared_secret');
     $data{ts}            = Mojo::Date->new->to_datetime;
     $data{config}        = YAML::XS::Load($config);
-    Mojo::Util::spurt(YAML::XS::Dump(\%data), catfile $STORAGE, "$id.yaml");
+    path($STORAGE, "$id.yaml")->spurt(YAML::XS::Dump(\%data));
     $c->redirect_to('edit' => id => $id);
   } or do {
     my $err = $@;
     chomp $err;
     $err =~ s! at \S+.*$!!s;
+    $c->app->log->debug("Cannot encode config file: $err");
     $c->render(error => "Cannot encode config file: $err", status => 400);
   };
 };
@@ -65,7 +68,7 @@ my $upload = sub {
   my $binary = $c->req->upload('binary');
 
   eval {
-    my $config = decode_docsis $binary->slurp;
+    my $config = decode_docsis($binary->slurp);
     $c->param(config   => YAML::XS::Dump($config));
     $c->param(filename => basename $binary->filename);
   } or do {
@@ -89,7 +92,7 @@ get(
   '/edit/:id' => {layout => 'default', template => 'editor'} => sub {
     my $c    = shift;
     my $id   = $c->paste_id;
-    my $data = YAML::XS::Load(Mojo::Util::slurp(catfile $STORAGE, "$id.yaml"));
+    my $data = YAML::XS::Load(path($STORAGE, "$id.yaml")->slurp);
     $c->param(config        => YAML::XS::Dump($data->{config}));
     $c->param(filename      => $data->{filename});
     $c->param(shared_secret => $data->{shared_secret});
@@ -116,8 +119,8 @@ helper paste_id => sub {
   return $id;
 };
 
-app->home->parse(App::docsisious->HOME);
-app->static->paths([app->home->rel_dir('public')]);
+app->home(Mojo::Home->new(App::docsisious->HOME));
+app->static->paths([app->home->child('public')]);
 app->defaults(error => '', VERSION => App::docsisious->VERSION);
 app->defaults->{VERSION} =~ s!\W+!-!g;
 app->start;

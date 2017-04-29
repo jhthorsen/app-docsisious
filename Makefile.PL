@@ -6,7 +6,7 @@ WriteMakefile(
   LICENSE       => 'artistic_2',
   ABSTRACT_FROM => 'lib/App/docsisious.pm',
   VERSION_FROM  => 'lib/App/docsisious.pm',
-  EXE_FILES     => [qw( script/docsisious )],
+  EXE_FILES     => [qw(script/docsisious)],
   META_MERGE    => {
     resources => {
       bugtracker => 'https://github.com/jhthorsen/app-docsisious/issues',
@@ -16,5 +16,5 @@ WriteMakefile(
   },
   BUILD_REQUIRES => {'Test::More'         => '0.88'},
   PREREQ_PM      => {'DOCSIS::ConfigFile' => '0.69', 'Mojolicious' => '6.00', 'YAML::XS' => '0.50'},
-  test           => {TESTS                => 't/*.t'},
+  test => {TESTS => (-e 'META.yml' ? 't/*.t' : 't/*.t xt/*.t')},
 );

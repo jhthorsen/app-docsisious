@@ -1,6 +1,6 @@
 Revision history for perl distribution App-docsisious
 
-0.08 Not Released
+0.08 2017-04-29T12:29:54+0200
  - Stop using deprecated "slurp" and "spurt" #3
  - Mojo::Home->parse() is no longer available #3
 

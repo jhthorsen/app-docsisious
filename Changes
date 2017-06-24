@@ -1,5 +1,8 @@
 Revision history for perl distribution App-docsisious
 
+0.10 Not Released
+ - Fix failing tests on perl 5.26
+
 0.09 2017-06-20T00:05:46+0200
  - Bump required Mojolicious version
 

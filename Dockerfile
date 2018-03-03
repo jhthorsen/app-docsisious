@@ -9,6 +9,7 @@ RUN apk add -U perl perl-io-socket-ssl \
   && apk add -t builddeps build-base perl-dev wget \
   && wget -q -O - https://github.com/jhthorsen/app-docsisious/archive/master.tar.gz | tar xvz \
   && apk del builddeps \
+  && curl -L https://cpanmin.us | perl - App::cpanminus
   && rm -rf /root/.cpanm /var/cache/apk/*
 
 RUN cpanm --installdeps /app-docsisious-master

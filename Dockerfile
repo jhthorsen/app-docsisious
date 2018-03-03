@@ -11,6 +11,8 @@ RUN apk add -U perl perl-io-socket-ssl \
   && apk del builddeps \
   && rm -rf /root/.cpanm /var/cache/apk/*
 
+RUN cpanm --installdeps /app-docsisious-master
+
 ENV MOJO_MODE production
 EXPOSE 3000
 CMD ["daemon"]

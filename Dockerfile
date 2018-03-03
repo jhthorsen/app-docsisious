@@ -6,15 +6,16 @@ FROM alpine:3.5
 MAINTAINER jhthorsen@cpan.org
 
 RUN apk add -U perl perl-io-socket-ssl \
-  && apk add -t builddeps build-base perl-dev wget \
+  && apk add -t builddeps build-base curl perl-dev wget \
   && wget -q -O - https://github.com/jhthorsen/app-docsisious/archive/master.tar.gz | tar xvz \
-  && apk del builddeps \
-  && curl -L https://cpanmin.us | perl - App::cpanminus
+  && curl -L https://cpanmin.us | perl - App::cpanminus \
+  && cpanm -M https://cpan.metacpan.org --installdeps ./app-docsisious-master \
+  && apk del builddeps curl wget \
   && rm -rf /root/.cpanm /var/cache/apk/*
 
-RUN cpanm --installdeps /app-docsisious-master
-
+ENV DOCSIS_STORAGE /data
 ENV MOJO_MODE production
-EXPOSE 3000
-CMD ["daemon"]
-ENTRYPOINT ["/app-docsisious-master/script/docsisious"]
+
+EXPOSE 8080
+
+ENTRYPOINT ["/app-docsisious-master/script/docsisious", "prefork", "-l", "http://*:8080"]

@@ -1,5 +1,8 @@
 Revision history for perl distribution App-docsisious
 
+0.11 Not Released
+ - Add support for X-Request-Base header
+
 0.10 2017-06-24T09:08:52+0200
  - Fix failing tests on perl 5.26
 
